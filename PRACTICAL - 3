@@ -1,0 +1,44 @@
+AIM:Implement Kohonen Self organizing map.
+
+import pandas import numpy import random
+ipv=[[0,0,1,1],[1,0,0,0],[0,1,1,0],[0,0,0,1]]
+ipv=[]
+ko=[]
+a = int(input("State the rumber of vectors"))
+b= int(input("State number of data points in a vector")) for i in range(a):
+for j in range(b): ko.append(random.randint(0,1)) ipv.append(ko)
+ko=[] print(ipv)
+
+
+n=int(input("State the number of cluster ")) m=len(ipv)
+print(n,m)
+lr=float(input("Enter the learning rate ")) print(lr)
+
+
+weights = [] wtv =[]
+for i in range(n):
+for j in range(m): wtv.append(round(random.random(), 2)) weights.append(wtv)
+wtv=[] print(weights)
+
+
+def updatewt(wn,inv):
+upw=[] w=0
+for i in range(len(inv)): w=wn[i]+lr*(inv[0]-wn[i]) upw.append(w)
+w=0 return upw
+def getmin(numbers):
+if not numbers:
+return None
+
+min_num = numbers[0] for num in numbers:
+if num < min_num:
+min_num = num return min_num min=10000
+d=0 f=[]
+print("initial wts are : ", weights) for i in ipv:
+for j in weights:
+for k in range(len(i)):
+d=((j[k]-i[k])**2)+d f.append(d)
+print("for input vector :",i) print("distance are : ",f) min_value = getmin(f)
+print("min distance value is : ",min_value) min_index = f.index(min_value)
+
+weights[min_index]=updatewt(weights[min_index],i) f=[]
+print("current wts are : ",weights)
