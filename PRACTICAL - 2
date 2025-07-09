@@ -1,0 +1,11 @@
+AIM:Write a program to implement Hebb‟s rule.
+
+import numpy as np
+inputs  =np.array([[1,1],[1,-1],[-1,1],[-1,-1]])
+targets=np.array([1,-1,-1,-1]) weights=np.zeros(2) learning_rate=0.1 epochs=100
+for epoch in range(epochs):
+for i in range(len(inputs)): weights+=learning_rate*inputs[i]*targets[i]
+def hebbian_and(input_): output=np.dot(input_,weights) return 1 if output>0 else-1
+print("final weights after Hebbian learning:",weights) for i in range(len(inputs)):
+output=hebbian_and(inputs[i])
+print(f"Input:{inputs[i]}->Predicted Output:{output} (Target:{targets[i]})")
