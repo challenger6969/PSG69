@@ -1,0 +1,15 @@
+AIM:Implement De-Morgan‟s Law. 
+
+a=[[1, 2, 3], [4, 5, 6]]
+b=[[4, 5, 6], [7, 8, 9]]
+ 
+D=[]
+for i in a:
+for j in i: D.append(j)
+print(D)
+C=[]
+for i in b:
+for j in i: C.append(j)
+print(C)
+list(set(D).intersection(C)) list(set(D).union(C))
+ 
