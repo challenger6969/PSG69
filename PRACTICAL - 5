@@ -1,0 +1,15 @@
+Write a program for implementing a BAM network. 
+
+import numpy as np class BAM:
+def  init (self,pattern1,pattern2): self.pattern1 = np.array(pattern1) self.pattern2 = np.array(pattern2)
+self.weights = np.dot(self.pattern1.T,self.pattern2)
+def recall(self,pattern1,direction='pattern1_to_pattern2'): pattern = np.array(pattern1)
+if direction == 'pattern1_to_pattern2':
+recalled = np.sign(np.dot(pattern, self.weights)) else:
+recalled = np.sign(np.dot(pattern, self.weights.T)) return recalled.astype(int)
+if   name  =="  main  ":
+pattern1 = [[1, -1, 1], [-1, 1, -1], [1, 1, -1]]
+pattern2 = [[1, -1], [-1, 1], [1, -1]]
+bam = BAM(pattern1, pattern2)
+print("Recalled Pattern2:", bam.recall([1, -1, 1]))
+print("Recalled Pattern1:", bam.recall([1, -1], "pattern2_to_pattern1"))
