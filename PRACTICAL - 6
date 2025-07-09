@@ -1,0 +1,19 @@
+AIM:Implement a program to find the winning neuron using MaxNet. 
+
+import pandas as pd
+ 
+import numpy as np
+
+a1 = 0.3
+a2 = 0.5
+a3 = 0.7
+a4 = 0.9
+weight = 0.2
+activations = np.array([a1, a2, a3, a4]) def maxnet_iteration(activations, weight):
+updated_activations = activations - weight * np.sum(np.maximum(0, activations)) + weight * activations
+return np.maximum(0, updated_activations) iterations = 0
+while np.sum(activations > 0) > 1:
+activations = maxnet_iteration(activations, weight) iterations += 1
+print(f"Iteration {iterations}: Activations = {activations}") winning_neuron_index = np.argmax(activations)
+print(f"\nWinning neuron: Neuron {winning_neuron_index + 1} with activation
+{activations[winning_neuron_index]}")
