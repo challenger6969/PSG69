@@ -1,0 +1,36 @@
+AIM:Perform max-min composition on any two fuzzy relations.
+
+# Input for first matrix
+n = int(input("Enter no of rows in matrix 1: "))
+m = int(input("Enter no of columns in matrix 1: "))
+
+print("Enter elements for Matrix 1:") matrix1 = []
+for i in range(n): row = []
+for j in range(m):
+val = int(input(f"Element [{i}][{j}]: ")) row.append(val)
+matrix1.append(row)
+
+# Input for second matrix
+o = int(input("Enter no of columns in matrix 2: ")) print("Enter elements for Matrix 2:")
+matrix2 = []
+for i in range(m): row = []
+for j in range(o):
+val = int(input(f"Element [{i}][{j}]: ")) row.append(val)
+matrix2.append(row)
+
+print("Matrix 1:") for row in matrix1:
+print(row)
+
+print("Matrix 2:") for row in matrix2:
+print(row)
+
+# Now let's do some element-wise operation like min(matrix1[i][j], matrix2[j][i]) # This only makes sense if matrix1 is n x m and matrix2 is m x n
+
+if o != n:
+print("For the element-wise min comparison, matrix2's columns must match matrix1's rows.") else:
+result = []
+for i in range(n): temp_row = [] for j in range(m):
+ 
+min_val = min(matrix1[i][j], matrix2[j][i]) temp_row.append(min_val)
+result.append(max(temp_row)) # max of each row's min values print("Result:")
+print(result)
